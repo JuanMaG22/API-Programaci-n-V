@@ -1,13 +1,11 @@
-export const products = (req, res) =>{
+import Product from "../models/product.model.js";
+
+export const products = async(req, res) =>{
+    const productList = await Product.findAll();
+
     res.status(200).json({
         succes: true,
-        data: [
-            {
-                subject: "programacion  v",
-                semester: "7",
-                date: new Date().toDateString(),
-            },
-        ],
+        data: productList
     });
 };
 
